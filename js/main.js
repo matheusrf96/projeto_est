@@ -8,66 +8,80 @@ function start(){
             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
         </p>
 
-        <button onclick="carregarForm();">Click</button>
+        <button class="btn waves-effect waves-light blue lighten-2" onclick="carregarForm();">
+            Continuar
+        </button>
     `;
 }
 
 function carregarForm(){
-    document.getElementById('content').innerHTML = `
-        <h1>O Teste</h1>
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
 
-        <form id="formulario">
-            <div>
-                <label for="pulso">Selecione a cor do pulso: </label>
-                <select id="pulso">
+    document.getElementById('content').innerHTML = `
+        <div class="row">
+        <form action="#" class="col s12" id="formulario">
+            <div class="input-field col s12">
+                <select id="pulso" required>
+                    <option value="" disabled selected>-</option>
                     <option value="verde">Verde</option>
                     <option value="verde-roxo">Verde e Roxo</option>
                     <option value="azul-verde">Azul e Verde</option>
                 </select>
+                <label for="pulso">Selecione a cor do pulso: </label>
             </div>
 
-            <div>
-                <label for="olhos">Selecione a cor de seus olhos: </label>
-                <select id="olhos">
+            <div class="input-field col s12">
+                <select id="olhos" required>
+                    <option value="" disabled selected>-</option>
                     <option value="acinzentado">Acinzentado</option>
                     <option value="mdm">Marrom, Dourado ou Mel</option>
                 </select>
+                <label for="olhos">Selecione a cor de seus olhos: </label>
             </div>
 
-            <div>
-                <label for="cabelo">Selecione a cor de seus cabelos: </label>
-                <select id="cabelo">
+            <div class="input-field col s12">
+                <select id="cabelo" required>
+                    <option value="" disabled selected>-</option>
                     <option value="acinzentado">Acinzentado</option>
                     <option value="cdm">Cobre, Dourado ou Marrom</option>
                 </select>
+                <label for="cabelo">Selecione a cor de seus cabelos: </label>
             </div>
 
-            <div>
-                <label for="orelhas">Selecione a cor atrás das orelhas:</label>
-                <select id="orelhas">
+            <div class="input-field col s12">
+                <select id="orelhas" required>
+                    <option value="" disabled selected>-</option>
                     <option value="rosado">Rosado</option>
                     <option value="amarelado">Amarelado</option>
                 </select>
+                <label for="orelhas">Selecione a cor atrás das orelhas:</label>
             </div>
 
-            <div>
-                <label for="pano">Resultado do Teste do Pano:</label>
-                <select id="pano">
+            <div class="input-field col s12">
+                <select id="pano" required>
+                    <option value="" disabled selected>-</option>
                     <option value="prata">Prata</option>
                     <option value="dourado">Dourado</option>
                 </select>
+                <label for="pano">Resultado do Teste do Pano:</label>
             </div>
 
-            <div>
-                <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
-                <select id="b-olhos">
+            <div class="input-field col s12">
+                <select id="b-olhos" required>
+                    <option value="" disabled selected>-</option>
                     <option value="acinzentado">Acinzentado</option>
                     <option value="dourado">Dourado</option>
                 </select>
+                <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
             </div>
 
-            <input type=submit onClick="gerarResultados()" value="Enviar" />
+            <button class="btn waves-effect waves-light blue lighten-2" onClick="gerarResultados()">
+                Enviar
+            </button>
         </form>
+        </div>
     `;
     
     // let url = "pages/teste.html";
