@@ -23,8 +23,6 @@ function carregarForm(){
         $('select').formSelect();
     });
 
-    document.getElementById('titulo-pagina').innerHTML = `Formulário`;
-
     document.getElementById('content').innerHTML = `
         <div class="row">
         <form action="#" class="col s12" id="formulario">

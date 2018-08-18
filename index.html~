@@ -12,7 +12,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper blue lighten-2">
-                <a href="#" class="brand-logo center" id="titulo-pagina">Home</a>
+                <a href="#" class="brand-logo center titulo-pagina">Home</a>
             </div>
         </nav>
     </div>
