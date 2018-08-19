@@ -122,7 +122,10 @@ function carregarForm(){
 // }
 
 function processarDados(){
-    let result = "";
+    let result = {
+        resultado: "",
+        estacao: ""
+    };
 
     let quente = 0;
     let frio = 0;
@@ -181,17 +184,31 @@ function processarDados(){
     if(quente === frio){
         neutro = true;
     }
-    console.log(`Quente: ${quente}, Frio: ${frio}, Neutro: ${neutro}`);
+    // console.log(`Quente: ${quente}, Frio: ${frio}, Neutro: ${neutro}`);
 
     if(neutro === true){
-        result = "neutro";
+        result.resultado = "neutro";
     }
     else{
         if(quente > frio){
-            result = "quente";
+            result.resultado = "quente";
+
+            if(dados.cabelo === "acinzentado"){
+                result.estacao = "outono";
+            }
+            else if(dados.cabelo === "cdm"){
+                result.estacao = "primavera";
+            }
         }
         else if(frio > quente){
-            result = "frio";
+            result.resultado = "frio";
+
+            if(dados.cabelo === "acinzentado"){
+                result.estacao = "verao";
+            }
+            else if(dados.cabelo === "cdm"){
+                result.estacao = "inverno";
+            }
         }
     }
 
@@ -199,10 +216,106 @@ function processarDados(){
 }
 
 function gerarResultados(){
-    const resultado = processarDados();
+    const result = processarDados();
+    let descricao = "";
 
     document.getElementById('titulo-pagina').innerHTML = "Resultado";
-    document.getElementById('content').innerHTML = "Resultado...";
 
-    console.log(resultado);
+    // console.log(resultado);
+
+    if(result.resultado === "neutro"){
+        document.getElementById('content').innerHTML = `
+            <h3>Seu sub-tom de pele é Neutro!</h3><br />
+            <p>
+                Nas peles Neutras favorecem-lhes praticamente todas as
+                cores, especialmente os tons naturais, como terra e bege (nude).
+            </p>
+        `;
+    }
+    else if(result.resultado === "quente"){
+        document.getElementById('content').innerHTML = `
+            <h3>Seu sub-tom de pele é Quente!</h3>
+        `;
+
+        if(result.estacao === "outono"){
+            descricao = `
+                <h5>Sua estação é Outono</h5>
+
+                DICAS: Mulher Outono tem afinidade com
+                tons terrosos, amarelados, vermelho-terra e
+                azul-esverdeado.<br />
+                Evitar: Cores como cinza, preto e azul-
+                marinho, cores frias ou pastéis.<br />
+                Melhores Cores: Terra, amarelo-queimado,
+                laranja, coral claro, vermelho sangue,
+                hortelã, turquesa-escuro, verde-mata,
+                verde-militar, e vermelho alaranjado.<br />
+                Maquiagem: Optar por tons terrosos aos
+                olhos e bochechas, lábios as cores chocolate
+                e vinho; rosa claro adaptado ao tom da pele.
+            `;
+        }
+        else if(result.estacao === "primavera"){
+            descricao = `
+                <h5>Sua estação é Primavera</h5>
+
+                DICAS: Mulher Primavera se favorece
+                mais com tons quentes.<br />
+                Evitar: Cores como preto, branco e fúcsia,
+                destacam mais que a própria cor da pele,
+                evitar também acessórios prateados, cores
+                azul claro, cinza claro e pastéis.<br />
+                Melhores Cores: Laranja, verde, salmão e
+                coral, cores vibrantes e claras como azul-
+                celeste, amarelo-ouro e tons terrosos. <br />
+                Maquiagem: cores de paleta para olhos,
+                lábios e blush deve ser tom de pêssego e de
+                ouro.
+            `;
+        }
+    }
+    else if(result.resultado === "frio"){
+        document.getElementById('content').innerHTML = `
+            <h3>Seu sub-tom de pele é Frio!</h3>
+        `;
+
+        if(result.estacao === "verao"){
+            descricao = `
+                <h5>Sua estação é Verão</h5>
+
+                DICAS: Mulher Verão é a que mais
+                necessita de cores discretas e suaves.<br />
+                Evitar: Cores vivas e quentes, castanhos e
+                laranjas, pois apagam a expressão e o tom
+                de pele.<br />
+                Melhores Cores: Cinzento claro e azulado,
+                rosa, turquesa, verde, lavanda, azul-água,
+                azul-marinho, violeta escura.<br />
+                Maquiagem: Cores de paleta para olhos,
+                lábios e bush deve ser tom rosado e fresco,
+                o ideal é não utilizar blush bronze.
+            `;
+        }
+        else if(result.estacao === "inverno"){
+            descricao = `
+                <h5>Sua estação é Inverno</h5>
+
+                DICAS: Mulher Inverno é a que fica
+                melhor de preto.<br />
+                Evitar: Cores mostarda, laranja e tons
+                de amarelo; essas cores apagam a pele
+                deixando-a pálida.<br />
+                Melhores Cores: Prata e branco, cores
+                primárias (azul e vermelho), azul Royal,
+                vermelho-menta ou contrastantes destas.<br />
+                Maquiagem: Principalmente tons de
+                violeta ou berinjela, vermelhos vivos e
+                intensos nos lábios e olhos e blush
+                rosado, são os mais indicados. Tons frios
+                e cores neutras.
+            `;
+        }
+    }
+
+    document.getElementById('content').innerHTML += descricao;
 }
