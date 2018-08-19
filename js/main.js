@@ -78,7 +78,7 @@ function carregarForm(){
                 <select id="b-olhos" required>
                     <option value="" disabled selected>-</option>
                     <option value="acinzentado">Acinzentado</option>
-                    <option value="dourado">Dourado</option>
+                    <option value="amarelado">Amarelado</option>
                 </select>
                 <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
             </div>
@@ -97,11 +97,6 @@ function carregarForm(){
 
     // document.getElementById('content').innerHTML = "<h1>Sucesso!</h1>";
 }
-
-function gerarResultados(){
-    document.getElementById('content').innerHTML = "Resultado...";
-}
-
 
 // function test(){
 //     document.getElementById('testando').submit((e) => {
@@ -125,3 +120,89 @@ function gerarResultados(){
 
 //     return false;
 // }
+
+function processarDados(){
+    let result = "";
+
+    let quente = 0;
+    let frio = 0;
+    let neutro = false;
+
+    const dados = {
+        pulso: document.getElementById("pulso").value,
+        olhos: document.getElementById("olhos").value,
+        cabelo: document.getElementById("cabelo").value,
+        orelhas: document.getElementById("orelhas").value,
+        pano: document.getElementById("pano").value,
+        bOlhos: document.getElementById("b-olhos").value
+    }
+
+    if(dados.pulso === "verde"){
+        quente++;
+    }
+    else if(dados.pulso === "verde-roxo" || dados.pulso === "azul-verde"){
+        neutro = true;
+    }
+    if(dados.olhos === "acinzentado"){
+        frio++;
+    }
+    else if(dados.olhos === "mdm"){
+        quente++;
+    }
+
+    if(dados.cabelo === "acinzentado"){
+        frio++;
+    }
+    else if(dados.cabelo === "cdm"){
+        quente++;
+    }
+
+    if(dados.orelhas === "rosado"){
+        frio++;
+    }
+    else if(dados.orelhas === "amarelado"){
+        quente++;
+    }
+
+    if(dados.pano === "prata"){
+        frio++;
+    }
+    else if(dados.pano === "dourado"){
+        quente++;
+    }
+
+    if(dados.bOlhos === "acinzentado"){
+        frio++;
+    }
+    else if(dados.bOlhos === "amarelado"){
+        quente++;
+    }
+
+    if(quente === frio){
+        neutro = true;
+    }
+    console.log(`Quente: ${quente}, Frio: ${frio}, Neutro: ${neutro}`);
+
+    if(neutro === true){
+        result = "neutro";
+    }
+    else{
+        if(quente > frio){
+            result = "quente";
+        }
+        else if(frio > quente){
+            result = "frio";
+        }
+    }
+
+    return result;
+}
+
+function gerarResultados(){
+    const resultado = processarDados();
+
+    document.getElementById('titulo-pagina').innerHTML = "Resultado";
+    document.getElementById('content').innerHTML = "Resultado...";
+
+    console.log(resultado);
+}
