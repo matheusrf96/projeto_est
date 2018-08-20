@@ -1,4 +1,6 @@
 function start(){
+    document.getElementById('titulo-pagina').innerHTML = "Início";
+
     document.getElementById("content").innerHTML = `
         <p class="descricao">
 		Tonalidade de pele é a coloração que se apresenta em cada indivíduo, aos olhos de
@@ -316,6 +318,12 @@ function gerarResultados(){
             `;
         }
     }
+
+    descricao += `
+        <button class="btn waves-effect waves-light blue lighten-2" onClick="start();">
+            Novo Teste
+        </button>
+    `;
 
     document.getElementById('content').innerHTML += descricao;
 }
