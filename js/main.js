@@ -34,6 +34,8 @@ function carregarForm(){
                 <select id="pulso" required>
                     <option value="" disabled selected>-</option>
                     <option value="verde">Verde</option>
+                    <option value="azul">Azul</option>
+                    <option value="roxo">Roxo</option>
                     <option value="verde-roxo">Verde e Roxo</option>
                     <option value="azul-verde">Azul e Verde</option>
                 </select>
@@ -145,9 +147,13 @@ function processarDados(){
     if(dados.pulso === "verde"){
         quente++;
     }
+    else if(dados.pulso === "azul" || dados.pulso === "roxo"){
+        frio++;
+    }
     else if(dados.pulso === "verde-roxo" || dados.pulso === "azul-verde"){
         neutro = true;
     }
+
     if(dados.olhos === "acinzentado"){
         frio++;
     }
@@ -320,7 +326,7 @@ function gerarResultados(){
     }
 
     descricao += `
-        <button class="btn waves-effect waves-light blue lighten-2" onClick="start();">
+        <button class="btn waves-effect waves-light blue lighten-2" onClick="carregarForm();">
             Novo Teste
         </button>
     `;
