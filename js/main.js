@@ -87,7 +87,7 @@ function carregarForm(){
                 <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
             </div>
 
-            <button class="btn waves-effect waves-light blue lighten-2" onClick="gerarResultados()">
+            <button class="btn waves-effect waves-light blue lighten-2" onClick="validarDados()">
                 Enviar
             </button>
         </form>
@@ -124,6 +124,51 @@ function carregarForm(){
 
 //     return false;
 // }
+
+function elNotNull(element){
+    if (element.length != 0) {
+        return element.value;
+    }
+    else {
+        return null;
+    }
+}
+
+function validarCampo(campo, nomeCampo){
+    //console.log(nomeCampo + ": " + campo);
+    
+    if(campo === null){
+        document.getElementById('content').innerHTML = `
+            O campo "${nomeCampo}" não foi preenchido!
+            <br />
+            <button class="btn waves-effect waves-light blue lighten-2" onClick="carregarForm()">
+                Voltar
+            </button>
+        `;
+    }
+    else{
+        gerarResultados();
+    }
+
+}
+
+function validarDados(){
+    const dados = {
+        pulso: elNotNull(document.getElementById("pulso").value),
+        olhos: elNotNull(document.getElementById("olhos").value),
+        cabelo: elNotNull(document.getElementById("cabelo").value),
+        orelhas: elNotNull(document.getElementById("orelhas").value),
+        pano: elNotNull(document.getElementById("pano").value),
+        bOlhos: elNotNull(document.getElementById("b-olhos").value)
+    }
+
+    validarCampo(dados.bOlhos, "Cor do branco dos olhos");
+    validarCampo(dados.pano, "Teste do Pano");
+    validarCampo(dados.orelhas, "Cor detrás das orelhas");
+    validarCampo(dados.cabelo, "Cor dos Cabelos");
+    validarCampo(dados.olhos, "Cor dos Olhos");
+    validarCampo(dados.pulso, "Cor do Pulso");
+}
 
 function processarDados(){
     let result = {
@@ -326,6 +371,7 @@ function gerarResultados(){
     }
 
     descricao += `
+        <br />
         <button class="btn waves-effect waves-light blue lighten-2" onClick="carregarForm();">
             Novo Teste
         </button>
