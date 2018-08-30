@@ -3,7 +3,7 @@ function start(){
 
     document.getElementById("content").innerHTML = `
         <p class="descricao">
-		Tonalidade de pele é a coloração que se apresenta em cada indivíduo, aos olhos de
+		De acordo com Viglioglia, a Tonalidade de pele é a coloração que se apresenta em cada indivíduo, aos olhos de
 	quem a vê. Podendo ser <i>Quente</i> ou <i>Fria</i>. <br /><br />
 		<b>Quente:</b> o aspecto da pele se apresenta com um tom dourado e amarelado (aos
 	olhos sensação de quente).<br />
