@@ -93,37 +93,7 @@ function carregarForm(){
         </form>
         </div>
     `;
-    
-    // let url = "pages/teste.html";
-    // window.location.href = url;
-    
-    // return false;
-
-    // document.getElementById('content').innerHTML = "<h1>Sucesso!</h1>";
 }
-
-// function test(){
-//     document.getElementById('testando').submit((e) => {
-//         e.preventDefault();
-//     });
-
-//     let teste = document.getElementById('teste').value;
-
-//     if(teste == '1'){
-//         console.log(teste);
-//     }
-//     else if(teste == 2){
-//         window.location.href = "https://google.com";
-//     }
-//     else if(teste == 3){
-//         window.location.href = "3.html";
-//     }
-//     else{
-//         console.log(teste);
-//     }
-
-//     return false;
-// }
 
 function elNotNull(element){
     if (element.length != 0) {
@@ -134,9 +104,7 @@ function elNotNull(element){
     }
 }
 
-function validarCampo(campo, nomeCampo){
-    //console.log(nomeCampo + ": " + campo);
-    
+function validarCampo(campo, nomeCampo){    
     if(campo === null){
         document.getElementById('content').innerHTML = `
             O campo "${nomeCampo}" não foi preenchido!
@@ -237,7 +205,6 @@ function processarDados(){
     if(quente === frio){
         neutro = true;
     }
-    // console.log(`Quente: ${quente}, Frio: ${frio}, Neutro: ${neutro}`);
 
     if(neutro === true){
         result.resultado = "neutro";
@@ -273,8 +240,6 @@ function gerarResultados(){
     let descricao = "";
 
     document.getElementById('titulo-pagina').innerHTML = "Resultado";
-
-    // console.log(resultado);
 
     if(result.resultado === "neutro"){
         document.getElementById('content').innerHTML = `
