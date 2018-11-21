@@ -14,7 +14,7 @@ function start(){
 		<b>Verão</b> e <b>Inverno</b> são peles Frias.
         </p>
 
-        <button class="btn waves-effect waves-light blue lighten-2" onclick="carregarForm();">
+        <button class="btn waves-effect waves-light light-blue lighten-3" onclick="carregarForm();">
             Continuar
         </button>
     `;
@@ -87,7 +87,7 @@ function carregarForm(){
                 <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
             </div>
 
-            <button class="btn waves-effect waves-light blue lighten-2" onClick="validarDados()">
+            <button class="btn waves-effect waves-light light-blue lighten-3" onClick="validarDados()">
                 Enviar
             </button>
         </form>
@@ -109,7 +109,7 @@ function validarCampo(campo, nomeCampo){
         document.getElementById('content').innerHTML = `
             O campo "${nomeCampo}" não foi preenchido!
             <br />
-            <button class="btn waves-effect waves-light blue lighten-2" onClick="carregarForm()">
+            <button class="btn waves-effect waves-light light-blue lighten-3" onClick="carregarForm()">
                 Voltar
             </button>
         `;
@@ -337,7 +337,7 @@ function gerarResultados(){
 
     descricao += `
         <br />
-        <button class="btn waves-effect waves-light blue lighten-2" onClick="carregarForm();">
+        <button class="btn waves-effect waves-light light-blue lighten-3" onClick="carregarForm();">
             Novo Teste
         </button>
     `;
