@@ -3,7 +3,7 @@ function start(){
 
     document.getElementById("content").innerHTML = `
         <p class="descricao">
-		De acordo com Viglioglia, a Tonalidade de pele é a coloração que se apresenta em cada indivíduo, aos olhos de
+		De acordo com Hallaweel, a Tonalidade de pele é a coloração que se apresenta em cada indivíduo, aos olhos de
 	quem a vê. Podendo ser <i>Quente</i> ou <i>Fria</i>. <br /><br />
 		<b>Quente:</b> o aspecto da pele se apresenta com um tom dourado e amarelado (aos
 	olhos sensação de quente).<br />
@@ -33,11 +33,9 @@ function carregarForm(){
             <div class="input-field col s12">
                 <select id="pulso" required>
                     <option value="" disabled selected>-</option>
-                    <option value="verde">Verde</option>
-                    <option value="azul">Azul</option>
-                    <option value="roxo">Roxo</option>
-                    <option value="verde-roxo">Verde e Roxo</option>
-                    <option value="azul-verde">Azul e Verde</option>
+                    <option value="quente">Verde</option>
+                    <option value="frio">Azul ou Roxo</option>
+                    <option value="neutro">Verde e Roxo ou Azul e Verde</option>
                 </select>
                 <label for="pulso">Selecione a cor do pulso: </label>
             </div>
@@ -66,7 +64,7 @@ function carregarForm(){
                     <option value="rosado">Rosado</option>
                     <option value="amarelado">Amarelado</option>
                 </select>
-                <label for="orelhas">Selecione a cor atrás das orelhas:</label>
+                <label for="orelhas">Selecione a cor que se apresenta, ou seja, que você tem atrás das orelhas:</label>
             </div>
 
             <div class="input-field col s12">
@@ -75,7 +73,7 @@ function carregarForm(){
                     <option value="prata">Prata</option>
                     <option value="dourado">Dourado</option>
                 </select>
-                <label for="pano">Resultado do Teste do Pano:</label>
+                <label for="pano">Selecione uma das cores que realce sua pele, ou seja, que combine:</label>
             </div>
 
             <div class="input-field col s12">
@@ -84,7 +82,7 @@ function carregarForm(){
                     <option value="acinzentado">Acinzentado</option>
                     <option value="amarelado">Amarelado</option>
                 </select>
-                <label for="b-olhos">Selecione a cor do branco de seus olhos</label>
+                <label for="b-olhos">Selecione a cor da região branca de seus olhos</label>
             </div>
 
             <button class="btn waves-effect waves-light light-blue lighten-3" onClick="validarDados()">
@@ -157,13 +155,13 @@ function processarDados(){
         bOlhos: document.getElementById("b-olhos").value
     }
 
-    if(dados.pulso === "verde"){
+    if(dados.pulso === "quente"){
         quente++;
     }
-    else if(dados.pulso === "azul" || dados.pulso === "roxo"){
+    else if(dados.pulso === "frio"){
         frio++;
     }
-    else if(dados.pulso === "verde-roxo" || dados.pulso === "azul-verde"){
+    else if(dados.pulso === "neutro"){
         neutro = true;
     }
 
