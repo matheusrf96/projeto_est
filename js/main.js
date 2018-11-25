@@ -1,3 +1,7 @@
+var app = {
+    nome: ''
+}
+
 function start(){
     document.getElementById('titulo-pagina').innerHTML = "Início";
 
@@ -14,9 +18,25 @@ function start(){
 		<b>Verão</b> e <b>Inverno</b> são peles Frias.
         </p>
 
-        <button class="btn waves-effect waves-light light-blue lighten-3" onclick="carregarForm();">
-            Continuar
+        <button class="btn waves-effect waves-light light-blue lighten-3" onclick="inserirNome();">
+            Iniciar Teste
         </button>
+    `;
+}
+
+function inserirNome(){
+    document.getElementById('content').innerHTML = `
+        <form>
+            <div class="input-field col s9">
+                <input id="nome-user" type="text" class="validate">
+                <label for="nome-user">Insira seu nome</label>            
+            </div>
+            <div class="col s2">
+                <button class="btn waves-effect waves-light light-blue lighten-3" onclick="carregarForm();">
+                    Continuar
+                </button>
+            </div>
+        </form>
     `;
 }
 
@@ -25,6 +45,7 @@ function carregarForm(){
         $('select').formSelect();
     });
 
+    app.nome = document.getElementById('nome-user').value;
     document.getElementById('titulo-pagina').innerHTML = `Formulário`;
 
     document.getElementById('content').innerHTML = `
@@ -235,13 +256,15 @@ function processarDados(){
 
 function gerarResultados(){
     const result = processarDados();
+    let titulo = `${ app.nome }, seu sub-tom de pele é`;
     let descricao = "";
 
     document.getElementById('titulo-pagina').innerHTML = "Resultado";
+    document.getElementById('content').innerHTML = "";
 
     if(result.resultado === "neutro"){
-        document.getElementById('content').innerHTML = `
-            <h3>Seu sub-tom de pele é Neutro!</h3><br />
+        document.getElementById('content').innerHTML += `
+            <h3>${titulo} Neutro!</h3><br />
             <p>
                 Nas peles Neutras favorecem-lhes praticamente todas as
                 cores, especialmente os tons naturais, como terra e bege (nude).
@@ -249,9 +272,7 @@ function gerarResultados(){
         `;
     }
     else if(result.resultado === "quente"){
-        document.getElementById('content').innerHTML = `
-            <h3>Seu sub-tom de pele é Quente!</h3>
-        `;
+        document.getElementById('content').innerHTML += `<h3>${titulo} Quente!</h3>`;
 
         if(result.estacao === "outono"){
             descricao = `
@@ -291,9 +312,7 @@ function gerarResultados(){
         }
     }
     else if(result.resultado === "frio"){
-        document.getElementById('content').innerHTML = `
-            <h3>Seu sub-tom de pele é Frio!</h3>
-        `;
+        document.getElementById('content').innerHTML += `<h3>${titulo} Frio!</h3>`;
 
         if(result.estacao === "verao"){
             descricao = `
@@ -335,7 +354,7 @@ function gerarResultados(){
 
     descricao += `
         <br />
-        <button class="btn waves-effect waves-light light-blue lighten-3" onClick="carregarForm();">
+        <button class="btn waves-effect waves-light light-blue lighten-3" onClick="inserirNome();">
             Novo Teste
         </button>
     `;
