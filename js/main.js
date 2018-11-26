@@ -58,7 +58,7 @@ function carregarForm(){
                     <option value="frio">Azul ou Roxo</option>
                     <option value="neutro">Verde e Roxo ou Azul e Verde</option>
                 </select>
-                <label for="pulso">Selecione a cor do pulso: </label>
+                <label for="pulso">Selecione, na região do pulso, as cores de sua veia: </label>
             </div>
 
             <div class="input-field col s12">
